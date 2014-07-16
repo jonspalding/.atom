@@ -1,0 +1,24 @@
+'editor':
+  'fontSize': 13
+  'lineHeight': 1
+  'showInvisibles': true
+  'fontFamily': 'Inconsolata'
+'core':
+  'destroyEmptyPanes': false
+  'disabledPackages': [
+    'atom-nrepl'
+    'term2'
+  ]
+'exception-reporting':
+  'userId': '2abf6aa5-7a88-3ef9-e9d4-164898a225e9'
+'release-notes':
+  'viewedVersion': '0.95.0'
+'welcome':
+  'showOnStartup': false
+'metrics':
+  'userId': '698442aedf688da1068b4c513abbfbb11652d9e7'
+'tree-view': {}
+'autocomplete':
+  'includeCompletionsFromAllBuffers': true
+'autocomplete-plus':
+  'includeCompletionsFromAllBuffers': true
