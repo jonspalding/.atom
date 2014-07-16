@@ -1,0 +1,3 @@
+[submodule "packages/nrepl"]
+	path = packages/nrepl
+	url = git://github.com/jonspalding/atom-nrepl.git
