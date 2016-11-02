@@ -17,8 +17,51 @@
 #   'ctrl-p': 'core:move-down'
 #
 
+# tmux like keybindings
 'body':
-  'ctrl-alt-left':  'window:focus-pane-on-left'
-  'ctrl-alt-right': 'window:focus-pane-on-right'
-  'ctrl-alt-up':    'window:focus-pane-above'
-  'ctrl-alt-down':  'window:focus-pane-below'
+  'ctrl-b left':  'window:focus-pane-on-left'
+  'ctrl-b right': 'window:focus-pane-on-right'
+  'ctrl-b up':    'window:focus-pane-above'
+  'ctrl-b down':  'window:focus-pane-below'
+
+'atom-text-editor':
+  'alt-down':       'editor:move-to-beginning-of-next-paragraph'
+  'alt-up':         'editor:move-to-beginning-of-previous-paragraph'
+  'alt-shift-down': 'editor:select-to-beginning-of-next-paragraph'
+  'alt-shift-up':   'editor:select-to-beginning-of-previous-paragraph'
+
+'.platform-darwin atom-text-editor':
+  'ctrl-shift-m': 'bracket-matcher:select-inside-brackets'
+
+'.platform-darwin atom-text-editor:not([mini])':
+  'cmd-shift-v': 'clipboard-plus:toggle'
+
+'atom-workspace':
+  'ctrl-alt-g': 'git-control:toggle'
+  'ctrl-`': 'terminal-fusion:toggle'
+  'ctrl-j e': 'proto-repl:execute-text-entered-in-repl'
+
+'.platform-darwin atom-workspace atom-text-editor:not([mini])':
+  'ctrl-j l': 'proto-repl:toggle'
+  'ctrl-j j': 'proto-repl:start-self-hosted-repl'
+  'ctrl-j b': 'proto-repl:execute-block'
+  'ctrl-j p': 'proto-repl:execute-top-block'
+  'ctrl-j s': 'proto-repl:execute-selected-text'
+  'ctrl-j f': 'proto-repl:load-current-file'
+  'ctrl-j r': 'proto-repl:refresh-namespaces'
+  'ctrl-j shift-r': 'proto-repl:super-refresh-namespaces'
+  'ctrl-j x': 'proto-repl:run-tests-in-namespace'
+  'ctrl-j t': 'proto-repl:run-test-under-cursor'
+  'ctrl-j a': 'proto-repl:run-all-tests'
+  'ctrl-j d': 'proto-repl:print-var-documentation'
+  'ctrl-j c': 'proto-repl:print-var-code'
+  'ctrl-j n': 'proto-repl:list-ns-vars'
+  'ctrl-j shift-n': 'proto-repl:list-ns-vars-with-docs'
+  'ctrl-j o': 'proto-repl:open-file-containing-var'
+
+'atom-workspace atom-text-editor:not([mini])':
+  'shift-enter': 'proto-repl:execute-text-entered-in-repl'
+
+'.terminal-fusion':
+  'cmd-c': 'terminal-fusion:copy'
+  'cmd-v': 'terminal-fusion:paste'

@@ -1,24 +1,193 @@
-'editor':
-  'fontSize': 13
-  'lineHeight': 1
-  'showInvisibles': true
-  'fontFamily': 'Inconsolata'
-'core':
-  'destroyEmptyPanes': false
-  'disabledPackages': [
-    'atom-nrepl'
-    'term2'
-  ]
-'exception-reporting':
-  'userId': '2abf6aa5-7a88-3ef9-e9d4-164898a225e9'
-'release-notes':
-  'viewedVersion': '0.95.0'
-'welcome':
-  'showOnStartup': false
-'metrics':
-  'userId': '698442aedf688da1068b4c513abbfbb11652d9e7'
-'tree-view': {}
-'autocomplete':
-  'includeCompletionsFromAllBuffers': true
-'autocomplete-plus':
-  'includeCompletionsFromAllBuffers': true
+"*":
+  Zen:
+    fullscreen: false
+    tabs: "multiple"
+  "atom-beautify":
+    general:
+      _analyticsUserId: "dadba72a-76bf-4583-b0c9-7e814ca83d0c"
+  "atom-material-ui":
+    colors:
+      abaseColor: "#607d8b"
+      genAccent: true
+      predefinedColor: "Blue Grey"
+    tabs:
+      compactTabs: true
+      noTabMinWidth: true
+      tintedTabBar: true
+    treeView:
+      compactList: true
+    ui:
+      panelContrast: true
+      panelShadows: true
+  autocomplete:
+    includeCompletionsFromAllBuffers: true
+  "autocomplete-plus":
+    includeCompletionsFromAllBuffers: true
+  "bracket-matcher":
+    autocompleteSmartQuotes: false
+  core:
+    disabledPackages: [
+      "atom-nrepl"
+      "nrepl"
+      "tabular"
+      "paredit"
+      "term2"
+      "linter-puppet"
+      "term3"
+      "linter-clojure"
+      "slack-chat"
+      "atom-html-preview"
+      "color-picker"
+      "data-atom"
+      "git-blame"
+      "git-control"
+      "git-history"
+      "git-log"
+      "git-tab-status"
+      "merge-conflicts"
+      "navigate"
+      "tokamak"
+      "rustfmt"
+      "racer"
+      "Parinfer"
+      "perry"
+      "tokamak-terminal"
+      "terminal-plus"
+      "lisp-indent"
+    ]
+    followSymlinks: false
+    packagesWithKeymapsDisabled: [
+      "proto-repl"
+    ]
+    telemetryConsent: "limited"
+    themes: [
+      "atom-material-ui"
+      "atom-material-syntax"
+    ]
+    useCustomTitleBar: true
+  editor:
+    autoIndentOnPaste: false
+    fontFamily: "Inconsolata"
+    invisibles: {}
+    lineHeight: 1
+    nonWordCharacters: "./\\()\"':,.;<>~!@#$%^&*|+=[]{}`~?-"
+    scrollPastEnd: true
+    showInvisibles: true
+  "exception-reporting":
+    userId: "2abf6aa5-7a88-3ef9-e9d4-164898a225e9"
+  linter:
+    lintDebug: true
+    showInfoMessages: true
+  "linter-clojure":
+    clojureExecutablePath: "/Users/jonspalding/.m2/repository/org/clojure/clojure/1.7.0/clojure-1.7.0.jar"
+    javaExecutablePath: "/usr/bin/java"
+  "linter-rust":
+    cargoPath: "/usr/local/bin/cargo"
+    executablePath: "/usr/local/bin/rustc"
+    rustcPath: "/usr/local/bin/rustc"
+  "lisp-paredit":
+    indentationForms: [
+      "&"
+      "monitor-exit"
+      "/^case/"
+      "try"
+      "/^reify/"
+      "finally"
+      "/^(.*-)?loop/"
+      "/^let/"
+      "/^import/"
+      "new"
+      "/^deftype/"
+      "/^let/"
+      "fn"
+      "recur"
+      "/^set.*!$/"
+      "."
+      "var"
+      "quote"
+      "catch"
+      "throw"
+      "monitor-enter"
+      "ns"
+      "in-ns"
+      "/^([^/]+/)?def/"
+      "/^if/"
+      "/^when/"
+      "/^unless/"
+      "while"
+      "for"
+      "/(^|/)with/"
+      "testing"
+      "while"
+      "cond"
+      "condp"
+      "apply"
+      "binding"
+      "locking"
+      "proxy"
+      "reify"
+      "/^extend/"
+      "facts"
+      "do"
+      "doseq"
+      "dorun"
+      "doall"
+      "dosync"
+      "start"
+      "stop"
+      "lambda"
+    ]
+    strict: false
+  metrics:
+    userId: "698442aedf688da1068b4c513abbfbb11652d9e7"
+  "one-dark-ui":
+    tabSizing: "Even"
+  perry: {}
+  "proto-repl":
+    autoPrettyPrint: true
+    displayHelpText: false
+    leinPath: "/usr/local/bin/lein"
+  racer:
+    racerBinPath: "/Users/jonspalding/.cargo/bin/racer"
+    rustSrcPath: "/Users/jonspalding/Dropbox/tools/rust/src"
+  react: {}
+  "release-notes":
+    viewedVersion: "0.95.0"
+  term2: {}
+  "terminal-fusion":
+    ansiColors:
+      normal:
+        blue: "#436acd"
+        cyan: "#4acdcc"
+        green: "#51cd41"
+        magenta: "#cc57cd"
+        red: "#cd463c"
+        yellow: "#cfcd36"
+    style: {}
+  "tokamak-terminal":
+    style:
+      theme: "dracula"
+    toggles:
+      autoClose: true
+  "tool-bar":
+    visible: false
+  "tree-view": {}
+  "web-browser": {}
+  welcome:
+    showOnStartup: false
+".clojure.source":
+  editor:
+    autoIndent: false
+    nonWordCharacters: "()\"':,;~@#$%^&{}[]`"
+".js.regexp.replacement.source":
+  editor:
+    nonWordCharacters: "./\\()\"':,.;<>~!@#$%^&*|+=[]{}`~?-"
+".js.regexp.source":
+  editor:
+    nonWordCharacters: "./\\()\"':,.;<>~!@#$%^&*|+=[]{}`~?-"
+".js.source":
+  editor:
+    nonWordCharacters: "./\\()\"':,.;<>~!@#$%^&*|+=[]{}`~?-"
+".rust.source":
+  editor:
+    nonWordCharacters: "./\\()\"':,.;<>~!@#$%^&*|+=[]{}`~?-"
