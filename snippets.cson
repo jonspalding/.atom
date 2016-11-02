@@ -18,3 +18,18 @@
   'Benchmark':
     'prefix': 'bench'
     'body': 'time = Benchmark.realtime do\n  $1\nend\nLOGGER.info("[$2] Took #{time}s to $3")'
+
+'.source.clojure':
+  'defn-':
+    'prefix': 'defn-'
+    'body': """
+      (defn- ${1:name} [${2:params}]
+        ${3:body})
+    """
+
+  'defn':
+    'prefix': 'defn'
+    'body': """
+      (defn ${1:name} [${2:params}]
+        ${3:body})
+    """

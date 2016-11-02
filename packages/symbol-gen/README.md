@@ -6,9 +6,6 @@ the options [found here](https://github.com/weskinner/symbol-gen/blob/master/lib
 However, you can include your own settings by adding them to `~/.ctags` on mac / linux or
 `C:\ctags.conf` on windows.
 
-:exclamation: **Warning**: This project is still in heavy development.  The output tags file can get somewhat polluted
-for larger projects and can grow in size rapidly.
-
 ###Installing
 
 Install using the Atom Package Manager.
@@ -19,12 +16,10 @@ Install using the Atom Package Manager.
 
 Hit `cmd-alt-g` to generate tags file for your project.  This can take a few moments.
 
+###Configuration
+
+Symbol-gen will pay attention to your "Exclude VCS Ignored Paths" and "Ignored Names" atom settings.
+
 ###Caveats
 
 The current implementation of Symbols View can take a bit to load a large (>20MB) tags file.  Be patient.
-
-####Currently Developing
-- Better default tags generation
-
-####On the Horizon
-- Update tags file on save of any file in project
