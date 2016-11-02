@@ -1,0 +1,121 @@
+@import (reference) "syntax-variables";
+
+/* Default colors have been selected to style well with the One Dark theme */
+.define-default() {
+  @syntax-text-color: hsl(220, 14%, 71%);
+  @syntax-background-color: hsl(220, 13%, 18%);
+}
+.define-default();
+
+/* Note that these colors should take precedence over themes */
+@syntax-color-attribute: mix(@syntax-text-color, #806040, 50%);
+@syntax-color-documentation: mix(
+  @syntax-text-color, @syntax-background-color, 41%
+);
+@syntax-color-lifetime: mix(@syntax-text-color, #e7007d, 50%);
+@syntax-color-macro: mix(@syntax-text-color, #00f0ff, 50%);
+@syntax-color-parameter: mix(@syntax-text-color, #2255bb, 50%);
+@syntax-color-token: inherit;
+
+/**
+ * Blends text with respect to the main background color.
+ *
+ * @color  The color to blend
+ * @weight Percentage of the color to blend with the background
+ */
+.blend-text(@color, @weight) {
+  color: mix(@color, @syntax-background-color, @weight);
+}
+
+/**
+ * Rough lightness inversion of text with respect to the main background color.
+ *
+ * @color  The color to invert
+ * @weight Percentage of the inverted color mixed with the background
+ */
+.invert-text(@color, @weight) {
+  color: mix(spin((#fff - @color), 180), @syntax-background-color, @weight);
+}
+
+atom-text-editor::shadow .source.rust {
+
+  .attribute {
+    color: @syntax-color-attribute;
+    .string {
+      .blend-text(@syntax-color-attribute, 60%);
+    }
+  }
+
+  .documentation {
+    color: @syntax-color-documentation;
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  .lifetime {
+    color: @syntax-color-lifetime;
+  }
+
+  .macro {
+    color: @syntax-color-macro;
+  }
+
+  .markup {
+    color: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    &.bold {
+      font-weight: bold;
+    }
+    &.definition {
+      .blend-text(@syntax-color-documentation, 60%);
+      @bg-color: mix(
+        @syntax-color-documentation, @syntax-background-color, 14%
+      );
+      background-color: @bg-color;
+      border: 1px solid @bg-color;
+      border-radius: 1px;
+    }
+    &.heading {
+      .invert-text(@syntax-color-documentation, 87%);
+      font-weight: bold;
+    }
+    &.italic {
+      font-style: italic;
+    }
+    &.link-text {
+      .invert-text(@syntax-color-documentation, 72%);
+    }
+    &.link-url {
+      .blend-text(@syntax-color-documentation, 60%);
+      text-decoration: underline;
+    }
+    &.quote {
+      .blend-text(@syntax-color-documentation, 60%);
+      font-style: italic;
+    }
+    &.strikethrough {
+      .blend-text(@syntax-color-documentation, 55%);
+      text-decoration: line-through;
+    }
+    &.raw {
+      .invert-text(@syntax-color-documentation, 92%);
+    }
+    &.symbol {
+      .invert-text(@syntax-color-documentation, 78%);
+      font-weight: bold;
+    }
+  }
+
+  .parameter {
+    color: @syntax-color-parameter;
+  }
+
+  /* The token class is a only a placeholder for setting the default color */
+  .operator,
+  .symbol,
+  .token {
+    color: @syntax-color-token;
+  }
+
+}

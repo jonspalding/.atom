@@ -1,0 +1,11 @@
+[
+  {
+    name: "Prod PG"
+    protocol: "postgresql"
+    user: "dr"
+    password: "SD1F_VCMTQg5"
+    server: "postgres.agentsmutual.co.uk"
+    database: "am"
+    options: ""
+  }
+]

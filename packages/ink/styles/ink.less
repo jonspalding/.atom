@@ -1,0 +1,245 @@
+// The ui-variables file is provided by base themes provided by Atom.
+//
+// See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
+// for a full listing of what's available.
+// Also: https://github.com/atom/atom/blob/master/static/variables/syntax-variables.less
+
+@import "ui-variables";
+@import "syntax-variables";
+
+atom-text-editor {
+  clip: rect(auto auto auto auto); // Otherwise inline results spill everywhere
+}
+
+.inline-block progress.ink:indeterminate {
+  animation-iteration-count: infinite;
+}
+
+// for the atom-overlay positioned below the current line
+.no-pointer-events {
+  pointer-events: none;
+}
+
+atom-overlay:last-child .ink.inline {
+  background-color: contrast(@syntax-background-color,
+                             darken(@syntax-background-color, 4%),
+                             lighten(@syntax-background-color, 4%));
+}
+
+atom-text-editor::shadow {
+  div.block-notify .region {
+    background: @background-color-info;
+    opacity: 0.2;
+  }
+  div.block-notify.hidden .region {
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  div.doc-highlight .region{
+    background-color: fade(@background-color-info, 10%);
+  }
+
+  div.ink.block {
+    background: url("atom://ink/res/stripe.png");
+    background-size: 20px;
+    opacity: 0.05;
+    transition: opacity 0.2s;
+    &.hidden {
+      opacity: 0;
+    }
+  }
+
+  .highlight.error-line .region {
+    background: fade(@background-color-error, 30%);
+  }
+
+  .icon::before {
+    font-family: 'Octicons Regular';
+  }
+  .icon-diff-modified::before {
+    content: "\f06d";
+  }
+  .icon-chevron-right::before {
+    content: "\f078";
+  }
+}
+
+// TODO: more CSS sharing
+
+.ink.under {
+  font-family: @font-family;
+  color: @text-color;
+
+  cursor: default;
+
+  &.error {
+    color: @text-color-error;
+  }
+
+  background-color: @inset-panel-background-color;
+
+  border-top: 1px solid @syntax-wrap-guide-color;
+  border-bottom: 1px solid @syntax-wrap-guide-color;
+  padding-left: 5px;
+}
+
+
+.ink.inline {
+  color: @syntax-text-color;
+  position: relative;
+  left: 1em;
+
+  pointer-events: auto;
+
+  &.error {
+    color: @text-color-error;
+    border-left: 2px solid @background-color-error;
+  }
+
+  background: @syntax-background-color;
+  border-left: 2px solid @background-color-info;
+  border-right: 2px solid contrast(@syntax-background-color,
+                             darken(@syntax-background-color, 4%),
+                             lighten(@syntax-background-color, 4%));
+
+  border-radius: 3px;
+
+  padding: 0px 0.5em 0px 0.5em;
+  transition: all 0.2s;
+  opacity: 1;
+  cursor: default;
+
+  max-width: 400px;
+  overflow: hidden;
+  white-space: pre;
+
+  * {
+    vertical-align: top;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  &:hover {
+    overflow: auto;
+  }
+
+  &.loading {
+    opacity: 0.5;
+    .icon:before {
+      height: initial;
+      width: initial;
+      animation: spin 4s linear infinite;
+      @keyframes spin { 100% { transform: rotate(1turn); } }
+    }
+  }
+
+  .icon {
+    text-align: center;
+    &:before {
+      width: 1em;
+      margin: 0;
+      font-size: inherit;
+    }
+  }
+
+  &.ink-hide, &.ink-hide.invalid {
+    opacity: 0;
+    transform: translate(1em);
+  }
+  &.invalid {
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  > .tree > .body {
+    max-height: 250px;
+  }
+
+  .editor.editor-colors {
+    color: @syntax-text-color;
+    word-wrap: normal;
+    white-space: pre;
+    background: none;
+    padding: 0;
+  }
+}
+
+.ink.stepper {
+  .ink.inline();
+  max-width: initial;
+  padding-right: 0;
+  border-rigth: 0;
+  .fade {
+    opacity: 0.5;
+  }
+  .btn-group {
+    padding-left: .4em;
+  }
+  button:before {
+    font-size: 1.2em;
+  }
+  &:hover {
+    overflow: hidden;
+  }
+}
+
+atom-text-editor::shadow {
+  .ink-bp {
+    margin-left: 0.3em;
+    transition: all 0.2s;
+    &.ink-hide {
+      opacity: 0;
+      transform: translate(-1em);
+    }
+  }
+}
+
+.tab.debug .title:before {
+  font-family: "Octicons Regular";
+  font-size: medium;
+  text-align: center;
+  content: "\f091";
+  font-style: normal !important;
+  margin-right: 5px;
+  vertical-align: top;
+  // For better visualisation in Mac OS
+  -webkit-font-smoothing: antialiased;
+}
+
+.ink.tree {
+  display: inline-block;
+  > .icon {
+    float: left;
+    width: 1em;
+  }
+  .gutted {
+    margin-left: 1.2em;
+  }
+  .icon {
+    text-align: center;
+    transition: all 0.1s ease-out;
+    &.open {
+      transform: rotate(0.25turn);
+    }
+  }
+}
+
+.gotodef-panel {
+  .two-lines {
+    padding: 0.2em 0.75em 0.2em 1em !important;
+    .primary-line, .secondary-line {
+      line-height: 1.8em;
+    }
+  }
+  .error-message {
+    color: @text-color-error;
+  }
+  .character-match {
+    font-weight: bold;
+  }
+}

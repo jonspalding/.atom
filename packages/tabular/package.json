@@ -1,0 +1,25 @@
+{
+  "name": "tabular",
+  "version": "0.1.0",
+  "description": "Tabular support for Atom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yhsiang/tabular"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "readme": "# Tabular support for Atom\n\nMake csv,tsv files more readable in Atom.\n\nOriginally [converted](http://atom.io/docs/latest/converting-a-text-mate-bundle)\nfrom the [Tabular TextMate bundle](https://github.com/textmate/tabular.tmbundle).\n\nContributions are greatly appreciated. Please fork this repository and open a pull request to add snippets, make grammar tweaks, etc.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/yhsiang/tabular/issues"
+  },
+  "homepage": "https://github.com/yhsiang/tabular",
+  "_id": "tabular@0.1.0",
+  "dist": {
+    "shasum": "826ad9fb01c00155f18c50d55e90763a46230b2b"
+  },
+  "_from": "/Users/jonspalding/.atom/.node-gyp/.atom/.apm/tabular/0.1.0/package.tgz"
+}

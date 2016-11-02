@@ -1,0 +1,98 @@
+diff --git a/src/am/instruction_matching/bootstrap.clj b/src/am/instruction_matching/bootstrap.clj
+index 854d7cd..be3bb45 100644
+--- a/src/am/instruction_matching/bootstrap.clj
++++ b/src/am/instruction_matching/bootstrap.clj
+@@ -1,78 +1,85 @@
+ (ns am.instruction-matching.bootstrap
+     (:require [am.instruction-matching
+                [handler :as handler]
+                [routes :as routes]
+                [scheduled-jobs :as scheduled-jobs]]
+               [am.instruction-matching.components
+                [dr :as dr]
+                [metrics :as metrics]
+                [pedestal :as pedestal]
+                [sqs :as sqs]]
+               [clojure.java.io :as io]
+               [clojure.tools.logging :as log]
+               [com.stuartsierra.component :as component]
+               [databus-client
+                [consumer :as consumer]
+                [redis :as redis]]
+               [am.components.quartz :as quartz]
+               [nomad :refer [defconfig with-location-override]])
+     (:import [java.util.concurrent TimeUnit]))
+ 
+ (defconfig config (io/resource "config.edn"))
+ 
+ (defn get-settings
+   ([] (get-settings (get (System/getenv) "AM_PROFILE" "dev")))
+   ([env] (with-location-override {:environment (keyword env)}
+            (config))))
+ 
+ (defn make-system [settings]
+   (component/system-map
+-   :metrics (metrics/->Metrics)
++
+    :dr (dr/map->DrClient (:dr settings))
+ 
+    :dr-event-stream (sqs/map->SQSEventStream (:sqs settings))
+ 
++   :databus-event-stream (redis/map->RedisBatchStream {:env (:nomad/environment settings)
++                                                       :app-name "instruction-matching"
++                                                       :bus :instruction
++                                                       :types [:instruction-submitted
++                                                               :relations-result
++                                                               :identity-result]})
++
++   :databus-metrics (component/using
++                     (metrics/map->Metrics
++                      (merge {:host (or (System/getProperty "am.aws.instance-id")
++                                        (System/getProperty "am.localip"))}
++                             (:metrics settings)))
++                     {:additional-metrics :databus-event-stream})
++
+    :dr-event-handler (component/using
+                        (consumer/map->EventHandler {:handler #'handler/dr-event-handler
+                                                     :error-handler #'handler/error-handler
+                                                     :env (:nomad/environment settings)})
+                        {:event-stream :dr-event-stream
+                         :dr :dr
+                         :metrics :metrics})
+ 
+-   :databus-event-stream (redis/map->RedisBatchStream {:env (:nomad/environment settings)
+-                                                       :app-name "instruction-matching"
+-                                                       :bus :instruction
+-                                                       :types [:instruction-submitted
+-                                                               :relations-result
+-                                                               :identity-result]})
+-
+    :databus-event-handler (component/using
+                            (consumer/map->EventHandler {:handler #'handler/databus-event-handler
+                                                         :error-handler #'handler/error-handler
+                                                         :env (:nomad/environment settings)})
+                            {:event-stream :databus-event-stream
+                             :dr :dr
+                             :metrics :metrics})
+ 
+    :api (component/using (pedestal/map->PedestalComponent
+                           {:service (-> routes/service
+                                         (assoc :io.pedestal.http/port
+                                                (get-in settings [:http :port])))
+                            :injections [:metrics :databus-event-handler]
+                            :env (:nomad/environment settings)})
+                          [:metrics :databus-event-handler])
+ 
+    :quartz (quartz/map->QuartzComponent
+             (let [web-port (get-in settings [:http :port])]
+               {:quartz-config-properties {"org.quartz.scheduler.instanceName" "ComplianceScheduler"
+                                           "org.quartz.threadPool.threadCount" "4"}
+                :jobs [(quartz/with-job-data
+                         (quartz/def-interval-job :compliance-check 15 TimeUnit/MINUTES
+                           (scheduled-jobs/run-compliance-check job-data))
+                         {:port web-port})]}))))
+ 
+ (defn bootstrap
+   ([] (bootstrap (get-settings)))
+   ([settings]
+    (component/start (make-system settings))))

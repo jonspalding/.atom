@@ -1,0 +1,60 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Creates Geo Curator Postgres DB on RDS.",
+  "Resources": {
+    "GeoDB": {
+      "Type": "AWS::RDS::DBInstance",
+      "Properties": {
+        "DBName": "geo",
+        "AllocatedStorage": "100",
+        "DBInstanceClass": "db.t2.small",
+        "Engine": "postgres",
+        "EngineVersion": "9.3.6",
+        "MasterUsername": "geo_root",
+        "MasterUserPassword": "changeme",
+        "BackupRetentionPeriod": "7",
+        "DBSubnetGroupName": "euw1-dbs-prd01",
+        "VPCSecurityGroups": [
+          "sg-5b4bf73e"
+        ],
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "Geo Curator"
+          },
+          {
+            "Key": "Role",
+            "Value": "DB"
+          },
+          {
+            "Key": "Environment",
+            "Value": "production"
+          }
+        ]
+      },
+      "DeletionPolicy": "Snapshot"
+    },
+    "dns": {
+      "Type": "AWS::Route53::RecordSetGroup",
+      "Properties": {
+        "HostedZoneName": "agentsmutual.co.uk.",
+        "Comment": "Geo Curator DB",
+        "RecordSets": [
+          {
+            "Name": "postgres.geo-curator.agentsmutual.co.uk.",
+            "Type": "CNAME",
+            "TTL": "60",
+            "ResourceRecords": [
+              {
+                "Fn::GetAtt": [
+                  "GeoDB",
+                  "Endpoint.Address"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "linter-puppet",
+  "linter-package": true,
+  "main": "./lib/init",
+  "version": "1.0.0",
+  "description": "Lint puppet, using puppet parser",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcelocarlosbr/linter-puppet"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "readme": "# linter-puppet",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/marcelocarlosbr/linter-puppet/issues"
+  },
+  "homepage": "https://github.com/marcelocarlosbr/linter-puppet",
+  "_id": "linter-puppet@1.0.0",
+  "_shasum": "e3bbf241a5e4970951753e312a2f2545d55d39f6",
+  "_resolved": "file:../d-115710-32979-1yo8avn/package.tgz",
+  "_from": "../d-115710-32979-1yo8avn/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "lib/init.coffee",
+        "lib/linter-puppet.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "darkula-ui",
+  "theme": "ui",
+  "version": "0.1.0",
+  "private": false,
+  "description": "An Atom UI theme inspired by the Darkula theme from IntelliJ IDEA.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benburton/darkula-ui"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "readme": "# Darkula UI Theme\n\nAn [Atom](http://atom.io) UI theme inspired by the Darkula theme from [IntelliJ IDEA](http://www.jetbrains.com/idea/).\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/benburton/darkula-ui/issues"
+  },
+  "homepage": "https://github.com/benburton/darkula-ui",
+  "_id": "darkula-ui@0.1.0",
+  "_shasum": "599be810b8b59fea7fa2cab84fe7b2cc038bbf2c",
+  "_resolved": "file:../d-115127-67697-ld3zin/package.tgz",
+  "_from": "../d-115127-67697-ld3zin/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

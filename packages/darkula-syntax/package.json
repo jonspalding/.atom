@@ -1,0 +1,35 @@
+{
+  "name": "darkula-syntax",
+  "theme": "syntax",
+  "version": "0.3.0",
+  "private": false,
+  "description": "An Atom theme inspired by the Darkula theme from IntelliJ IDEA.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benburton/darkula-syntax"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "readme": "# Darkula Theme\n\nAn [Atom](http://atom.io) theme inspired by the Darkula theme from [IntelliJ IDEA](http://www.jetbrains.com/idea/).\n\n![](https://github.com/benburton/darkula-syntax/raw/master/screenshot.png)\n\nThe following languages/libraries are supported:\n  * CSS\n  * Java\n  * Javascript\n  * LESS\n  * Ruby (uses [RubyMine](http://www.jetbrains.com/ruby/) color conventions instead of IDEA)\n  * Scala\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/benburton/darkula-syntax/issues"
+  },
+  "homepage": "https://github.com/benburton/darkula-syntax",
+  "_id": "darkula-syntax@0.3.0",
+  "_shasum": "e96a72ac3338f5f2c256c1d462199807b32854eb",
+  "_resolved": "file:../d-115127-67689-1llr6u5/package.tgz",
+  "_from": "../d-115127-67689-1llr6u5/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}
